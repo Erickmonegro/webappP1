@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | Trabajo Final P1</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}" href="../static/css/style.css">
+</head>
+<body>
+
+<div class="dashboard-wrapper">
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-profile">
+      <div class="profile-pic"></div>
+      <div class="profile-line"></div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a href="#" class="nav-item"></a>
+      <a href="#" class="nav-item"></a>
+      <a href="#" class="nav-item"></a>
+      <a href="#" class="nav-item"></a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <button class="btn-off">off</button>
+    </div>
+  </aside>
+
+  <main class="main-content">
+
+    <header class="top-bar">
+      <button class="menu-toggle" id="menu-toggle">
+        <span></span>
+        <span></span>
+      </button>
+    </header>
+
+    <section class="content-area">
+      <div class="content-card">
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script th:src="@{/js/main.js}" src="../static/js/main.js"></script>
+</body>
+</html>

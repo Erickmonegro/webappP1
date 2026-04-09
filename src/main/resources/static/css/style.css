@@ -1,0 +1,260 @@
+/* =========================================
+   VARIABLES DE COLOR (¡Fáciles de cambiar!)
+   ========================================= */
+:root {
+    --bg-color: #f4f7f6;        /* Color de fondo de toda la pantalla */
+    --card-bg: #1f5f7a;         /* El azul oscuro de la tarjeta */
+    --input-bg: #e2ebf3;        /* El celeste claro de los inputs y botón */
+    --label-bg: #9ea7a6;        /* El gris de fondo de los textos */
+    --text-dark: #333333;       /* Color de texto oscuro */
+}
+
+/* =========================================
+   RESETEO BÁSICO
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* =========================================
+   DISEÑO DE LA PÁGINA (Centrado)
+   ========================================= */
+.login-page {
+    background-color: var(--bg-color);
+    /* Flexbox nos permite centrar la tarjeta perfectamente en el medio */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Ocupa el 100% del alto de la pantalla */
+}
+
+/* =========================================
+   LA TARJETA AZUL (Mockup 1)
+   ========================================= */
+.login-card {
+    background-color: var(--card-bg);
+    width: 400px;
+    height: 550px;
+    border-radius: 40px; /* Bordes muy redondeados como en tu imagen */
+    padding: 50px;
+    position: relative; /* Para poder posicionar el botón abajo a la derecha */
+    display: flex;
+    flex-direction: column;
+}
+
+/* =========================================
+   CABECERA Y ETIQUETAS (Con fondo gris)
+   ========================================= */
+.login-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.login-header h1 {
+    background-color: var(--label-bg);
+    color: var(--card-bg); /* Letra del mismo color que el fondo */
+    display: inline-block;
+    padding: 5px 15px;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.input-group {
+    margin-bottom: 30px;
+}
+
+.input-group label {
+    background-color: var(--label-bg);
+    color: var(--text-dark);
+    display: inline-block;
+    padding: 2px 8px;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+/* =========================================
+   CAMPOS DE TEXTO
+   ========================================= */
+.input-group input {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 12px;
+    background-color: var(--input-bg);
+    font-size: 16px;
+    outline: none; /* Quita el borde azul feo al hacer clic */
+}
+
+/* Efecto al hacer clic en el input */
+.input-group input:focus {
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+}
+
+/* =========================================
+   BOTÓN INGRESAR (Abajo a la derecha)
+   ========================================= */
+.action-group {
+    position: absolute;
+    bottom: 50px;
+    right: 50px;
+}
+
+.btn-primary {
+    background-color: var(--input-bg);
+    color: var(--text-dark);
+    border: none;
+    border-radius: 8px;
+    padding: 10px 25px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #c9d8e6; /* Un poco más oscuro al pasar el ratón */
+}
+
+/* =========================================
+   VARIABLES ADICIONALES PARA EL DASHBOARD
+   ========================================= */
+:root {
+    --sidebar-bg: #ffffff;
+    --sidebar-border: #4caf50; /* Verde del borde izquierdo */
+    --sidebar-width: 250px;
+}
+
+/* =========================================
+   LAYOUT PRINCIPAL DEL DASHBOARD
+   ========================================= */
+.dashboard-wrapper {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden; /* Evita que la página completa tenga scroll */
+    background-color: var(--bg-color);
+}
+
+/* =========================================
+   SIDEBAR (Menú Lateral)
+   ========================================= */
+.sidebar {
+    width: var(--sidebar-width);
+    background-color: var(--sidebar-bg);
+    border-left: 4px solid var(--sidebar-border); /* Borde verde */
+    border-right: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease; /* Preparado para cuando lo colapsemos con JS */
+}
+
+/* Sección del Perfil */
+.sidebar-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 0;
+}
+
+.profile-pic {
+    width: 100px;
+    height: 100px;
+    background-color: var(--card-bg); /* Azul oscuro */
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+.profile-line {
+    width: 80px;
+    height: 8px;
+    background-color: var(--card-bg);
+    border-radius: 4px;
+}
+
+/* Navegación (Las barras azules) */
+.sidebar-nav {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 0 30px;
+}
+
+.nav-item {
+    height: 15px;
+    background-color: var(--card-bg);
+    border-radius: 4px;
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+.nav-item:hover {
+    opacity: 0.7; /* Efecto hover simple */
+}
+
+/* Botón Off */
+.sidebar-footer {
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-off {
+    background-color: var(--card-bg);
+    color: var(--input-bg);
+    border: none;
+    padding: 10px 40px;
+    border-radius: 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* =========================================
+   CONTENIDO PRINCIPAL (Derecha)
+   ========================================= */
+.main-content {
+    flex-grow: 1; /* Toma todo el espacio restante a la derecha */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Barra superior y Menú Hamburguesa */
+.top-bar {
+    height: 50px;
+    background-color: var(--card-bg); /* Azul oscuro */
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.menu-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 30px;
+    height: 3px;
+    background-color: var(--input-bg); /* Celeste claro */
+}
+
+/* El gran contenedor azul */
+.content-area {
+    padding: 30px;
+    flex-grow: 1;
+    display: flex;
+}
+
+.content-card {
+    background-color: var(--card-bg);
+    border-radius: 40px; /* Bordes muy redondeados */
+    flex-grow: 1;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}

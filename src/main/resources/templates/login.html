@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Trabajo Final P1</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" href="../static/css/style.css">
+</head>
+<body class="login-page">
+
+<main class="login-container">
+    <div class="login-card">
+
+
+        <header class="login-header">
+            <h1>Login</h1>
+        </header>
+
+        <form action="#" th:action="@{/login}" method="post">
+
+            <div class="input-group">
+                <label for="username">Usuario</label>
+                <input type="text" id="username" name="username" placeholder="Ingrese su usuario" required>
+            </div>
+
+            <div class="input-group">
+                <label for="password">Contraseña</label>
+                <input type="password" id="password" name="password" placeholder="Ingrese su contraseña" required>
+            </div>
+
+            <div class="action-group">
+                <button type="submit" class="btn-primary">Ingresar</button>
+            </div>
+
+        </form>
+    </div>
+</main>
+
+<script th:src="@{/js/main.js}" src="../../static/js/main.js"></script>
+</body>
+</html>
