@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inicio - Alojamientos | Trabajo Final P1</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}" href="../static/css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+</head>
+<body>
+
+<div class="dashboard-wrapper">
+  <header class="top-bar">
+    <div class="top-bar-left">
+      <button class="menu-toggle" id="menu-toggle"><span></span><span></span></button>
+      <span class="top-bar-title">Alojamientos</span>
+    </div>
+    <div class="user-wallet">
+      <span class="material-symbols-outlined">payments</span>
+      <div class="wallet-info">
+        <span class="wallet-label">Crédito Estudiantil</span>
+        <span class="wallet-amount">RD$ 1,200.00</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="dashboard-body">
+    <aside class="sidebar-fixed">
+      <nav class="fixed-nav">
+        <a th:href="@{/dashboard}" class="square-btn">
+          <span class="material-symbols-outlined">dashboard</span>
+        </a>
+        <a th:href="@{/dashboard}" class="square-btn active-btn">
+          <span class="material-symbols-outlined">home</span>
+        </a>
+        <a th:href="@{/tareas}" class="square-btn">
+          <span class="material-symbols-outlined">event_note</span>
+        </a>
+        <a th:href="@{/documentos}" class="square-btn">
+          <span class="material-symbols-outlined">folder</span>
+        </a>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <section class="content-area">
+        <div class="content-card scrollable-card">
+
+          <div class="center-search">
+            <div class="search-box">
+              <span class="material-symbols-outlined search-icon">search</span>
+              <input type="text" placeholder="Buscar alojamientos, zonas, precios...">
+            </div>
+          </div>
+
+          <div class="housing-top-section">
+
+            <div class="my-housing-card">
+              <div class="housing-icon-large">
+                <span class="material-symbols-outlined">real_estate_agent</span>
+              </div>
+              <div class="housing-info-lines">
+                <div class="info-line"><span>Residencia Universitaria Los Robles</span></div>
+                <div class="info-line"><span>Habitación Compartida - Piso 3</span></div>
+                <div class="info-line"><span>Estado: Alquilado (Hasta Dic 2026)</span></div>
+              </div>
+            </div>
+
+            <div class="recommendations-list">
+              <div class="rec-pill">
+                <span class="material-symbols-outlined">star</span>
+                <span>Cerca del campus principal</span>
+              </div>
+              <div class="rec-pill">
+                <span class="material-symbols-outlined">trending_down</span>
+                <span>Ofertas de última hora</span>
+              </div>
+              <div class="rec-pill">
+                <span class="material-symbols-outlined">group</span>
+                <span>Buscando compañero de cuarto</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="explore-section">
+            <h3 class="section-title">Alojamientos Disponibles</h3>
+            <div class="housing-grid">
+              <div class="explore-card">
+                <div class="explore-image">
+                  <span class="material-symbols-outlined">apartment</span>
+                </div>
+                <div class="explore-details">
+                  <h4>Apartaestudio Zona Norte</h4>
+                  <p class="price">$250 / mes</p>
+                  <p class="location"><span class="material-symbols-outlined">location_on</span> A 10 min de la U</p>
+                  <button class="btn-book" onclick="openBookingModal('Apartaestudio Zona Norte', 250)">Reservar Ahora</button>
+                </div>
+              </div>
+              <div class="explore-card">
+                <div class="explore-image">
+                  <span class="material-symbols-outlined">house</span>
+                </div>
+                <div class="explore-details">
+                  <h4>Casa Compartida Centro</h4>
+                  <p class="price">$180 / mes</p>
+                  <p class="location"><span class="material-symbols-outlined">location_on</span> Cerca del metro</p>
+                </div>
+              </div>
+              <div class="explore-card">
+                <div class="explore-image">
+                  <span class="material-symbols-outlined">bed</span>
+                </div>
+                <div class="explore-details">
+                  <h4>Habitación Residencial</h4>
+                  <p class="price">$150 / mes</p>
+                  <p class="location"><span class="material-symbols-outlined">location_on</span> Incluye servicios</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="slide-menu" id="sidebar">
+    <div class="sidebar-header">
+      <div class="profile-pic"></div>
+      <div class="profile-line"></div>
+    </div>
+    <div class="sidebar-footer">
+      <a th:href="@{/login}" class="btn-off" style="text-decoration: none; text-align: center; display: inline-block;">off</a>
+    </div>
+  </div>
+</div>
+<div class="modal-overlay" id="bookingModal">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3>Confirmar Reserva</h3>
+      <button class="close-modal" onclick="closeBookingModal()">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="booking-summary">
+        <p>Estás reservando: <strong id="book-title">---</strong></p>
+        <div class="price-check">
+          <span>Costo Mensual:</span>
+          <span class="amount" id="book-price">$0.00</span>
+        </div>
+        <hr>
+        <div class="price-check">
+          <span>Tu Crédito Actual:</span>
+          <span class="amount">$1,200.00</span>
+        </div>
+      </div>
+
+      <p class="payment-notice">El monto se descontará automáticamente de tu beca/crédito estudiantil.</p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-secondary" onclick="closeBookingModal()">Cancelar</button>
+      <button class="btn-primary" id="confirmPaymentBtn" style="border:none;">Confirmar y Pagar</button>
+    </div>
+  </div>
+</div>
+<script th:src="@{/js/main.js}" src="../static/js/main.js"></script>
+</body>
+</html>

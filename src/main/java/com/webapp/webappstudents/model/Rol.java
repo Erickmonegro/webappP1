@@ -1,6 +1,6 @@
 package com.webapp.webappstudents.model;
 
 public enum Rol {
-    ESTUDIANTE,
-    ADMIN
+    ROLE_ESTUDIANTE,
+    ROLE_ADMIN
 }

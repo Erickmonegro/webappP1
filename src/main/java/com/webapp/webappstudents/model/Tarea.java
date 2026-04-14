@@ -19,6 +19,6 @@ public class Tarea {
     private Boolean completada = false;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "user_id", nullable = true)
     private User user;
 }

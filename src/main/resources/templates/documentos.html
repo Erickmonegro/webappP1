@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biblioteca | Trabajo Final P1</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}" href="../static/css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+</head>
+<body>
+
+<div class="dashboard-wrapper">
+  <header class="top-bar">
+    <button class="menu-toggle" id="menu-toggle">
+      <span></span>
+      <span></span>
+    </button>
+    <span class="top-bar-title">Biblioteca de Archivos</span>
+  </header>
+
+  <div class="dashboard-body">
+    <aside class="sidebar-fixed">
+      <nav class="fixed-nav">
+        <a th:href="@{/dashboard}" class="square-btn">
+          <span class="material-symbols-outlined">dashboard</span>
+        </a>
+        <a th:href="@{/alojamientos}" class="square-btn">
+          <span class="material-symbols-outlined">home</span>
+        </a>
+        <a th:href="@{/tareas}" class="square-btn">
+          <span class="material-symbols-outlined">event_note</span>
+        </a>
+        <a th:href="@{/documentos}" class="square-btn active-btn">
+          <span class="material-symbols-outlined">folder</span>
+        </a>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <section class="content-area">
+
+        <div class="content-card scrollable-card">
+
+          <div class="search-section">
+            <div class="search-box">
+              <span class="material-symbols-outlined search-icon">search</span>
+              <input type="text" placeholder="Buscar documentos, manuales, archivos...">
+            </div>
+            <button class="btn-action" id="btnUploadDoc">
+              <span class="material-symbols-outlined">upload_file</span> Subir
+            </button>
+          </div>
+
+          <div class="documents-grid">
+            <div class="doc-card">
+              <span class="material-symbols-outlined doc-icon">description</span>
+              <p class="doc-title">Manual_Usuario.pdf</p>
+              <span class="doc-date">Modificado: Hoy</span>
+            </div>
+            <div class="doc-card">
+              <span class="material-symbols-outlined doc-icon" style="color: #fbbc05;">folder_zip</span>
+              <p class="doc-title">Reportes_2026.zip</p>
+              <span class="doc-date">Ayer</span>
+            </div>
+            <div class="doc-card">
+              <span class="material-symbols-outlined doc-icon" style="color: #34a853;">table</span>
+              <p class="doc-title">Inventario.xlsx</p>
+              <span class="doc-date">10 Abril</span>
+            </div>
+            <div class="doc-card">
+              <span class="material-symbols-outlined doc-icon">image</span>
+              <p class="doc-title">Logo_Final.png</p>
+              <span class="doc-date">05 Abril</span>
+            </div>
+            <div class="doc-card">
+              <span class="material-symbols-outlined doc-icon">description</span>
+              <p class="doc-title">Requisitos.docx</p>
+              <span class="doc-date">01 Abril</span>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="slide-menu" id="sidebar">
+    <div class="sidebar-header">
+      <div class="profile-pic"></div>
+      <div class="profile-line"></div>
+    </div>
+    <div class="sidebar-footer">
+      <a th:href="@{/login}" class="btn-off" style="text-decoration: none; text-align: center; display: inline-block;">off</a>
+    </div>
+  </div>
+
+</div>
+<div class="modal-overlay" id="docModal">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3>Subir Archivo</h3>
+      <button class="close-modal" id="closeDocModal">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+
+    <div class="modal-body">
+      <form id="uploadDocForm">
+        <div class="file-drop-area">
+          <span class="material-symbols-outlined drop-icon">cloud_upload</span>
+          <p>Arrastra tu archivo aquí o <b>explora</b></p>
+          <input type="file" class="file-input-hidden" required>
+        </div>
+
+        <div class="form-group" style="margin-top: 20px;">
+          <label>Nombre del documento (Opcional)</label>
+          <input type="text" placeholder="Ej: Resumen del Tema 1...">
+        </div>
+      </form>
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn-secondary" id="cancelDocBtn">Cancelar</button>
+      <button type="submit" form="uploadDocForm" class="btn-primary" style="border:none; cursor:pointer;">Subir a Biblioteca</button>
+    </div>
+  </div>
+</div>
+<script th:src="@{/js/main.js}" src="../static/js/main.js"></script>
+</body>
+</html>

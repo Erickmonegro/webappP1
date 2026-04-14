@@ -1,41 +1,52 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | Trabajo Final P1</title>
-    <link rel="stylesheet" th:href="@{/css/style.css}" href="../static/css/style.css">
+    <title>Iniciar Sesión | WebAppStudents</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
-<body class="login-page">
+<body class="auth-page">
 
-<main class="login-container">
-    <div class="login-card">
+<div class="auth-container">
+    <div class="auth-card">
 
+        <div class="auth-header">
+            <h2>Bienvenido Honey</h2>
+            <p>Inicia sesión para acceder a tu espacio.</p>
+        </div>
 
-        <header class="login-header">
-            <h1>Login</h1>
-        </header>
+        <div th:if="${param.exito}" class="alert alert-success">
+            <span class="alert-icon">✓</span>
+            <span>Cuenta creada exitosamente. Por favor, inicia sesión.</span>
+        </div>
 
-        <form action="#" th:action="@{/login}" method="post">
+        <div th:if="${param.error}" class="alert alert-error">
+            <span class="alert-icon">⚠</span>
+            <span>Correo o contraseña incorrectos.</span>
+        </div>
+        <form th:action="@{/login}" method="POST" class="auth-form">
 
             <div class="input-group">
-                <label for="username">Usuario</label>
-                <input type="text" id="username" name="username" placeholder="Ingrese su usuario" required>
+                <label for="username">Correo Electrónico</label>
+                <input type="email" id="username" name="username" placeholder="tu@correo.com" required>
             </div>
 
             <div class="input-group">
                 <label for="password">Contraseña</label>
-                <input type="password" id="password" name="password" placeholder="Ingrese su contraseña" required>
+                <input type="password" id="password" name="password" placeholder="Tu contraseña" required>
             </div>
 
-            <div class="action-group">
-                <button type="submit" class="btn-primary">Ingresar</button>
-            </div>
+            <button type="submit" class="btn-primary auth-btn">Ingresar</button>
 
         </form>
-    </div>
-</main>
 
-<script th:src="@{/js/main.js}" src="../../static/js/main.js"></script>
+        <div class="auth-footer">
+            <p>¿No tienes una cuenta? <a th:href="@{/registro}">Regístrate aquí</a></p>
+        </div>
+
+    </div>
+</div>
+
 </body>
 </html>
