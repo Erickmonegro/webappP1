@@ -143,21 +143,120 @@ if (btnUploadDoc && docModal) {
     });
 }
 
-/* ==========================================================================
-   5. LÓGICA ESPECÍFICA: ALOJAMIENTOS (RESERVAS)
-   ========================================================================== */
-const bookingModal = document.getElementById('bookingModal');
+
+//Funcion para buscar (para la biblioteca)
+document.addEventListener("DOMContentLoaded", function () {
+    const searchInput = document.getElementById("searchInput");
+
+    if (searchInput) {
+        searchInput.addEventListener("input", function () {
+
+            let valor = this.value.toLowerCase();
+            let cards = document.querySelectorAll(".doc-card");
+
+            cards.forEach(card => {
+
+                let titulo = card.querySelector(".doc-title").textContent.toLowerCase();
+
+                card.style.display = titulo.includes(valor) ? "block" : "none";
+            });
+        });
+    }
+
+    //funcion subir doc
+    const uploadForm = document.getElementById("uploadDocForm");
+
+    if (uploadForm) {
+        uploadForm.addEventListener("submit", async function (e) {
+            e.preventDefault();
+
+            let formData = new FormData(this);
+
+            try {
+                await fetch("/api/biblioteca/upload", {
+                    method: "POST",
+                    body: formData
+                });
+
+                window.location.reload();
+
+            } catch (err) {
+                console.error("Error subiendo archivo", err);
+            }
+        });
+    }
+
+});
+
+ document.addEventListener("DOMContentLoaded", () => {
+     
+     const token = document.querySelector('meta[name="_csrf"]').content;
+     const header = document.querySelector('meta[name="_csrf_header"]').content;
+
+     document.querySelectorAll(".btn-edit").forEach(btn => {
+         btn.addEventListener("click", async () => {
+
+             const id = btn.dataset.id;
+             const nuevo = prompt("Nuevo título:");
+
+             if (!nuevo || nuevo.trim() === "") return;
+
+             console.log("EDIT ID:", id);
+             console.log("CLICK EDIT:", id, nuevo);
+
+             const res = await fetch("/api/biblioteca/" + id, {
+                 method: "PUT",
+                 headers: {
+                     "Content-Type": "application/json",
+                     [header]: token
+                 },
+                 body: JSON.stringify({titulo: nuevo})
+             });
+
+             if (res.ok) {
+                 console.log("Actualizado correctamente");
+                 location.reload();
+             } else {
+                 alert("Error al actualizar");
+             }
+         });
+     });
+
+
+     document.querySelectorAll(".btn-delete").forEach(btn => {
+         btn.addEventListener("click", async () => {
+
+             const id = btn.dataset.id;
+
+             console.log("CLICK DELETE:", id);
+
+             await fetch("/api/biblioteca/" + id, {
+                 method: "DELETE",
+                 headers: {
+                     [header]: token
+                 }
+             });
+
+             location.reload();
+         });
+     });
+ });
+
+     /* ==========================================================================
+        5. LÓGICA ESPECÍFICA: ALOJAMIENTOS (RESERVAS)
+        ========================================================================== */
+     const bookingModal = document.getElementById('bookingModal');
 
 // Esta función es llamada directamente desde el HTML: onclick="openBookingModal('Nombre', 150)"
-window.openBookingModal = function(nombreAlojamiento, precio) {
-    if(bookingModal) {
-        document.getElementById('book-title').innerText = nombreAlojamiento;
-        document.getElementById('book-price').innerText = "$" + precio + ".00";
-        bookingModal.classList.add('active');
-    }
-}
+     window.openBookingModal = function (nombreAlojamiento, precio) {
+         if (bookingModal) {
+             document.getElementById('book-title').innerText = nombreAlojamiento;
+             document.getElementById('book-price').innerText = "$" + precio + ".00";
+             bookingModal.classList.add('active');
+         }
+     }
 
 // Función global de cerrar (por si la tienes en algún botón del HTML)
-window.closeBookingModal = function() {
-    closeAnyModal(bookingModal);
-}
+     window.closeBookingModal = function () {
+         closeAnyModal(bookingModal);
+     }

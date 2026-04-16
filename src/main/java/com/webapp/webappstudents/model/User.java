@@ -4,6 +4,7 @@ package com.webapp.webappstudents.model;
 import jakarta.persistence.*;
 import lombok.Data;
 import java.util.List;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "users") // <-- CAMBIO CRÍTICO: "users" en plural, porque "user" explota en Postgres
@@ -31,6 +32,7 @@ public class User {
     private List<Reservacion> reservations; // Requiere crear Reservacion.java
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<Documento> documentos; // <-- Corregido a singular: Documento (Requiere crear Documento.java)
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
