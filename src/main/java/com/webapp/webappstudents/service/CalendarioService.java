@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class CalendarService {
+public class CalendarioService {
 
     public List<DiaCalendario> generarCalendarioActual(List<Tarea> todasLasTareas) {
         List<DiaCalendario> dias = new ArrayList<>();

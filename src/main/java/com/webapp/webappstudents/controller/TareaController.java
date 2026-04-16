@@ -5,7 +5,7 @@ import com.webapp.webappstudents.model.Tarea;
 import com.webapp.webappstudents.model.User;
 import com.webapp.webappstudents.repository.TareaRepository;
 import com.webapp.webappstudents.repository.UserRepository;
-import com.webapp.webappstudents.service.CalendarService;
+import com.webapp.webappstudents.service.CalendarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,7 +25,7 @@ public class TareaController {
     private UserRepository userRepository;
 
     @Autowired
-    private CalendarService calendarService;
+    private CalendarioService calendarioService;
 
     // ==========================================
     // 1. MOSTRAR EL TABLERO Y EL CALENDARIO
@@ -40,7 +40,7 @@ public class TareaController {
         List<Tarea> misTareas = tareaRepository.findByUser(usuarioActual);
 
         // 3. Generamos el calendario usando las tareas de esa persona
-        List<DiaCalendario> diasCalendario = calendarService.generarCalendarioActual(misTareas);
+        List<DiaCalendario> diasCalendario = calendarioService.generarCalendarioActual(misTareas);
 
         // 4. Empacamos y enviamos al HTML
         model.addAttribute("tareas", misTareas);
