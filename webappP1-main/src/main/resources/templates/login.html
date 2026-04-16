@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión | WebAppStudents</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body class="auth-page">
+
+<div class="auth-container">
+    <div class="auth-card">
+
+        <div class="auth-header">
+            <h2>Bienvenido Honey</h2>
+            <p>Inicia sesión para acceder a tu espacio.</p>
+        </div>
+
+        <div th:if="${param.exito}" class="alert alert-success">
+            <span class="alert-icon">✓</span>
+            <span>Cuenta creada exitosamente. Por favor, inicia sesión.</span>
+        </div>
+
+        <div th:if="${param.error}" class="alert alert-error">
+            <span class="alert-icon">⚠</span>
+            <span>Correo o contraseña incorrectos.</span>
+        </div>
+        <form th:action="@{/login}" method="POST" class="auth-form">
+
+            <div class="input-group">
+                <label for="username">Correo Electrónico</label>
+                <input type="email" id="username" name="username" placeholder="tu@correo.com" required>
+            </div>
+
+            <div class="input-group">
+                <label for="password">Contraseña</label>
+                <input type="password" id="password" name="password" placeholder="Tu contraseña" required>
+            </div>
+
+            <button type="submit" class="btn-primary auth-btn">Ingresar</button>
+
+        </form>
+
+        <div class="auth-footer">
+            <p>¿No tienes una cuenta? <a th:href="@{/registro}">Regístrate aquí</a></p>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
