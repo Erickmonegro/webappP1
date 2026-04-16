@@ -24,7 +24,7 @@ public class User {
 
     private String nombre;
 
-    private Double creditos = 1200.0;
+    private Double creditos = 10000.0;
 
     @Enumerated(EnumType.STRING)
     private Rol role;

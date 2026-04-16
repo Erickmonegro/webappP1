@@ -57,7 +57,7 @@ public class AuthController {
         // 3. Le asignamos el rol por defecto
         nuevoUsuario.setRole(Rol.ROLE_ESTUDIANTE);
 
-        nuevoUsuario.setCreditos(1200.0);
+        nuevoUsuario.setCreditos(10000.0);
         // 4. Guardamos en PostgreSQL
         usuarioRepositorio.save(nuevoUsuario);
 

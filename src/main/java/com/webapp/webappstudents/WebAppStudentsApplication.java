@@ -8,4 +8,4 @@ public class WebAppStudentsApplication {
     public static void main(String[] args) {
         SpringApplication.run(WebAppStudentsApplication.class, args);
     }
-}   
+}

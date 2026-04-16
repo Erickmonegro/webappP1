@@ -23,7 +23,7 @@ async function loadUserCredits() {
 }
 
 function updateWalletDisplay(creditos) {
-    const formatted = `$ ${creditos.toLocaleString('es-DO', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
+    const formatted = `RD$ ${creditos.toLocaleString('es-DO', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
     if (walletAmount) walletAmount.textContent = formatted
     if (walletAmountReservation) walletAmountReservation.textContent = formatted
 }

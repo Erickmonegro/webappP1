@@ -6,6 +6,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class MainController {
 
+    @GetMapping("/admin")
+    public String showAdmin() {
+        return "admin";       // → templates/admin.html
+    }
+
     @GetMapping("/dashboard")
     public String showDashboard() {
         return "dashboard";
@@ -20,7 +25,4 @@ public class MainController {
     public String showAlojamientos() {
         return "alojamientos";
     }
-
-    // Nota: La ruta "/login" ya la tienes en tu AuthController,
-    // así que no hace falta ponerla aquí.
-}
+}
