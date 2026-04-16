@@ -1,6 +1,8 @@
 package com.webapp.webappstudents.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Data;
 import java.util.List;
@@ -17,23 +19,27 @@ public class User {
     private String email;
 
     @Column(nullable = false)
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
     private String nombre;
 
-    private Double creditos = 0.0;
+    private Double creditos = 1200.0;
 
     @Enumerated(EnumType.STRING)
     private Rol role;
 
     // Relaciones (Un usuario tiene muchas reservas, documentos y tareas)
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Reservacion> reservations; // Requiere crear Reservacion.java
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Documento> documentos; // <-- Corregido a singular: Documento (Requiere crear Documento.java)
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Tarea> tareas; // <-- Corregido a singular: Tarea (Requiere crear Tarea.java)
 
     // Lista de deseados (Muchos usuarios pueden desear muchos alojamientos)
@@ -43,5 +49,6 @@ public class User {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "alojamiento_id") // Ajustado a alojamiento
     )
+    @JsonIgnore
     private List<Alojamiento> listaDeseos; // <-- Corregido a singular: Alojamiento (Requiere crear Alojamiento.java)
 }

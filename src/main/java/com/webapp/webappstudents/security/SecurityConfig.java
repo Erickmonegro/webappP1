@@ -17,8 +17,13 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
+                .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        // 1. Rutas públicas (Tu login, registro, y tus archivos estáticos CSS/JS)
+                        // Rutas de API que requieren estar logueado
+                        .requestMatchers("/api/me", "/api/reservacion/me").authenticated()
+                        // El resto de /api/** es público (alojamientos, etc.)
+                        .requestMatchers("/api/**").permitAll()
+                        // 1. Rutas públicas (login, registro, archivos estáticos CSS/JS)
                         .requestMatchers("/login", "/registro", "/css/**", "/js/**", "/assets/**").permitAll()
                         // 2. Cualquier otra ruta requerirá estar logueado
                         .anyRequest().authenticated()
