@@ -703,6 +703,40 @@
     opacity: 0; cursor: pointer;
 }
 
+.doc-actions {display: flex;gap: 8px;margin-top: 10px;}
+
+
+.btn-edit,
+.btn-delete {border: none;padding: 6px 12px;border-radius: 8px;cursor: pointer;font-size: 13px;color: white;transition: 0.2s;}
+
+
+.btn-edit {background: var(--primary-blue);}
+.btn-edit:hover {opacity: 0.85;}
+
+.btn-delete {background: var(--primary-blue);}
+.btn-delete:hover {opacity: 0.85;}
+
+button {
+    font-family: inherit;
+}
+
+.btn-edit,
+.btn-delete {
+    font-weight: 600;
+}
+
+.toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--primary-blue);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    display: none;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
 /* ==========================================================================
    9. MÓDULOS ESPECÍFICOS: LOBBY Y ALOJAMIENTOS
    ========================================================================== */
