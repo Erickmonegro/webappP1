@@ -682,6 +682,48 @@
 .doc-title { color: var(--text-dark); font-weight: 600; font-size: 14px; margin-bottom: 5px; word-break: break-word; }
 .doc-date { color: #94a3b8; font-size: 12px; }
 
+.doc-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    width: 100%;
+}
+
+.btn-edit, .btn-delete {
+    flex: 1;
+    padding: 8px;
+    border: none;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s, color 0.2s;
+}
+
+.btn-edit {
+    background-color: #eff6ff;
+    color: var(--primary-blue);
+    border: 1px solid #bfdbfe;
+}
+
+.btn-edit:hover {
+    background-color: var(--primary-blue);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.btn-delete {
+    background-color: #fef2f2;
+    color: #ef4444;
+    border: 1px solid #fecaca;
+}
+
+.btn-delete:hover {
+    background-color: #ef4444;
+    color: white;
+    transform: translateY(-2px);
+}
+
 .file-drop-area {
     border: 2px dashed #cbd5e1;
     border-radius: 15px;

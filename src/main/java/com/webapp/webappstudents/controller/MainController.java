@@ -16,11 +16,6 @@ public class MainController {
         return "dashboard";
     }
 
-    @GetMapping("/documentos")
-    public String showDocumentos() {
-        return "documentos";
-    }
-
     @GetMapping("/alojamientos")
     public String showAlojamientos() {
         return "alojamientos";

@@ -81,7 +81,6 @@ if (btnNewTask && taskModal) {
     });
 }
 
-/* --- MENÚ CONTEXTUAL (CLIC DERECHO EN TAREAS) --- */
 const contextMenu = document.getElementById('customContextMenu');
 const menuEditBtn = document.getElementById('menuEditBtn');
 const menuDeleteForm = document.getElementById('menuDeleteForm');
@@ -142,6 +141,49 @@ if (btnUploadDoc && docModal) {
         docModal.classList.add('active');
     });
 }
+
+document.querySelectorAll('.btn-delete').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        const docId = this.getAttribute('data-id');
+        if (confirm('¿Estás seguro de eliminar este documento?')) {
+            fetch(`/api/biblioteca/${docId}`, {
+                method: 'DELETE'
+            }).then(response => {
+                if (response.ok) {
+                    window.location.reload();
+                } else {
+                    alert('Error al eliminar el documento.');
+                }
+            }).catch(err => console.error(err));
+        }
+    });
+});
+
+document.querySelectorAll('.btn-edit').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        const docId = this.getAttribute('data-id');
+        const tituloActual = this.closest('.doc-card').querySelector('.doc-title').innerText;
+        const nuevoTitulo = prompt('Ingrese el nuevo título del documento:', tituloActual);
+        
+        if (nuevoTitulo && nuevoTitulo.trim() !== '' && nuevoTitulo !== tituloActual) {
+            fetch(`/api/biblioteca/${docId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ titulo: nuevoTitulo.trim() })
+            }).then(response => {
+                if (response.ok) {
+                    window.location.reload();
+                } else {
+                    alert('Error al actualizar el documento.');
+                }
+            }).catch(err => console.error(err));
+        }
+    });
+});
 
 /* ==========================================================================
    5. LÓGICA ESPECÍFICA: ALOJAMIENTOS (RESERVAS)
