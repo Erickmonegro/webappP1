@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Panel de Administración - Usuarios</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="container mt-5">
+<h2>Gestión de Usuarios</h2>
+<table class="table table-striped mt-3">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Nombre</th>
+    <th>Email</th>
+    <th>Rol Actual</th>
+    <th>Acciones</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="u : ${usuarios}">
+    <td th:text="${u.id}"></td>
+    <td th:text="${u.nombre}"></td>
+    <td th:text="${u.email}"></td>
+    <td>
+      <span class="badge bg-info" th:text="${u.role}"></span>
+    </td>
+    <td>
+      <form th:action="@{/admin/usuarios/cambiar-rol/{id}(id=${u.id})}" method="post" class="d-inline">
+        <select name="nuevoRol" class="form-select form-select-sm d-inline w-auto">
+          <option th:each="rol : ${T(com.webapp.webappstudents.model.Rol).values()}"
+                  th:value="${rol}" th:text="${rol}"></option>
+        </select>
+        <button type="submit" class="btn btn-primary btn-sm">Actualizar</button>
+      </form>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<a href="/dashboard" class="btn btn-secondary">Volver al Dashboard</a>
+</body>
+</html>l>
